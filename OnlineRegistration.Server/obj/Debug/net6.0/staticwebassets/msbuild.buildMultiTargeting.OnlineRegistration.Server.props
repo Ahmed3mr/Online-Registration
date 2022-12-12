@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\OnlineRegistration.Server.props" />
+</Project>

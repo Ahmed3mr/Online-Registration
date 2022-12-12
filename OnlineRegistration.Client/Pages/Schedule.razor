@@ -1,0 +1,267 @@
+﻿@page "/Schedule"
+@using System.Text.Json;
+@using OnlineRegistration.Client.Models;
+
+
+<h3>Schedule</h3>
+
+@if (schedules == null)
+{
+    <p><em>loading...</em></p>
+}
+else
+{
+   
+    <BSTable Color=BSColor.Light IsBordered=true  IsStriped=true >
+        <BSTHead>
+            <BSTR>
+                <BSTD>Day</BSTD>
+                <BSTD>8:30 -> 10:10</BSTD>
+                <BSTD>10:30 -> 12:10</BSTD>
+                <BSTD>12:30 -> 2:10</BSTD>
+                <BSTD>2:30 -> 4:10</BSTD>
+            </BSTR>
+        </BSTHead>
+        <BSTBody>
+            <BSTR>
+                <BSTD AlignRow=AlignRow.Middle> Saturday </BSTD>
+                
+                  
+                    @for (int i = 0; i < 4; i++)
+                    {
+                        if (x < 20){
+                        if (x % 10 == 4){x += 7;}
+                        else{ x += 1;}
+                        emptySlotIndicator = false;
+                        foreach (ScheduleSlotModel schedule in schedules)
+                        {
+                            if(schedule .SlotNumber == x)
+                            {
+                                emptySlotIndicator = true;
+                                <BSTD>
+                                    @schedule.CourseName<br />
+                                    @schedule.LecturerName
+                                </BSTD>
+                            }
+                        }
+
+                        if (emptySlotIndicator == false)
+                        {
+                            <BSTD>
+                                none
+                            </BSTD>
+                        }
+
+                        }
+                    }
+
+                      </BSTR>
+                      
+                      <BSTR>
+                <BSTD AlignRow=AlignRow.Middle> Sunday </BSTD>
+                
+                  
+                    @for (int i = 0; i < 4; i++)
+                    {
+                        if (x < 30){
+                        if (x % 10 == 4){x += 7;}
+                        else { x += 1; }
+                        emptySlotIndicator = false;
+                        foreach (ScheduleSlotModel schedule in schedules)
+                        {
+                            if (schedule.SlotNumber == x)
+                            {
+                                emptySlotIndicator = true;
+                                <BSTD>
+                                    @schedule.CourseName<br />
+                                    @schedule.LecturerName
+                                </BSTD>
+                            }
+                        }
+
+                        if (emptySlotIndicator == false)
+                        {
+                            <BSTD>
+                                none
+                            </BSTD>
+                        }
+
+                        }
+                        
+                    }
+
+                      </BSTR>
+
+            <BSTR>
+                <BSTD AlignRow=AlignRow.Middle> monday </BSTD>
+
+
+                @for (int i = 0; i < 4; i++)
+                {
+                    if (x < 40)
+                    {
+                        if (x % 10 == 4) { x += 7; }
+                        else { x += 1; }
+                        emptySlotIndicator = false;
+                        foreach (ScheduleSlotModel schedule in schedules)
+                        {
+                            if (schedule.SlotNumber == x)
+                            {
+                                emptySlotIndicator = true;
+                                <BSTD>
+                                    @schedule.CourseName<br />
+                                    @schedule.LecturerName
+                                </BSTD>
+                            }
+                        }
+
+                        if (emptySlotIndicator == false)
+                        {
+                            <BSTD>
+                                none
+                            </BSTD>
+                        }
+
+                        }
+                    
+                }
+
+            </BSTR>
+
+            <BSTR>
+                <BSTD AlignRow=AlignRow.Middle> tuesday </BSTD>
+
+
+                @for (int i = 0; i < 4; i++)
+                {
+                    if (x < 50)
+                    {
+                        if (x % 10 == 4) { x += 7; }
+                        else { x += 1; }
+                        emptySlotIndicator = false;
+                        foreach (ScheduleSlotModel schedule in schedules)
+                        {
+                            if (schedule.SlotNumber == x)
+                            {
+                                emptySlotIndicator = true;
+                                <BSTD>
+                                    @schedule.CourseName<br />
+                                    @schedule.LecturerName
+                                </BSTD>
+                            }
+                        }
+
+                        if (emptySlotIndicator == false)
+                        {
+                            <BSTD>
+                                none
+                            </BSTD>
+                        }
+
+                        }
+                    }
+                
+
+            </BSTR>
+
+            <BSTR>
+                <BSTD AlignRow=AlignRow.Middle> wednesday </BSTD>
+
+
+                @for (int i = 0; i < 4; i++)
+                {
+                    if (x < 60)
+                    {
+                        if (x % 10 == 4) { x += 7; }
+                        else { x += 1; }
+                        emptySlotIndicator = false;
+                        foreach (ScheduleSlotModel schedule in schedules)
+                        {
+                            if (schedule.SlotNumber == x)
+                            {
+                                emptySlotIndicator = true;
+                                <BSTD>
+                                    @schedule.CourseName<br />
+                                    @schedule.LecturerName
+                                </BSTD>
+                            }
+                        }
+
+                        if (emptySlotIndicator == false)
+                        {
+                            <BSTD>
+                                none
+                            </BSTD>
+                        }
+
+                        }
+                    }
+                
+
+            </BSTR>
+
+            <BSTR>
+                <BSTD AlignRow=AlignRow.Middle> thursday </BSTD>
+
+
+                @for (int i = 0; i < 4; i++)
+                {
+                    if (x < 70)
+                    {
+                        if (x % 10 == 4) { x += 7; }
+                        else { x += 1; }
+                        emptySlotIndicator = false;
+                        foreach (ScheduleSlotModel schedule in schedules)
+                        {
+                            if (schedule.SlotNumber == x)
+                            {
+                                emptySlotIndicator = true;
+                                <BSTD>
+                                    @schedule.CourseName<br />
+                                    @schedule.LecturerName
+                                </BSTD>
+                            }
+                        }
+
+                        if (emptySlotIndicator == false)
+                        {
+                            <BSTD>
+                                none
+                            </BSTD>
+                        }
+
+                        }
+                    }
+                
+
+            </BSTR>
+
+        </BSTBody>
+        <BSTFoot>
+           
+        </BSTFoot>
+    </BSTable>
+
+}
+
+
+
+
+@code {
+    [Inject]
+    public HttpClient httpClient { get; set; }
+
+    public IEnumerable<ScheduleSlotModel>? schedules;
+    public int x = 10;
+    public bool emptySlotIndicator;
+
+    protected override async Task OnInitializedAsync()
+    {
+        schedules = await JsonSerializer.DeserializeAsync<IEnumerable<ScheduleSlotModel>>
+        (await httpClient.GetStreamAsync($"Schedule/LastRegistered?studentId={1}&regpid={3}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+    }
+
+ 
+
+}

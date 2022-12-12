@@ -1,0 +1,70 @@
+﻿@page "/RegisteredStudents"
+@using System.Text.Json;
+@using OnlineRegistration.Client.Models;
+@inject NavigationManager Navigation
+
+<PageTitle>Registered Students</PageTitle>
+
+<h1>Registered Students</h1>
+
+
+@if (regPeriod == null)
+{
+    <p><em>loading...</em></p>
+}
+else
+{
+    <p>The latest Registration period starts from @regPeriod.StartDate and ends in @regPeriod.EndDate</p>
+
+}
+
+
+@if (students == null)
+{
+    <p><em>loading...</em></p>
+}
+else
+{
+    <BSTable Color=BSColor.Primary IsBordered=true IsStriped=true class="table">
+        <BSTHead>
+            <BSTR>
+                <BSTD>Full Name</BSTD>
+                <BSTD>Registration Number</BSTD>
+                <BSTD>Schedule</BSTD>
+            </BSTR>
+        </BSTHead>
+        <BSTBody>
+            @foreach (var student in students)
+            {
+                <BSTR>
+                    <BSTD>@student.Name</BSTD>
+                    <BSTD>@student.RegId</BSTD>
+                    <BSTD>
+                        <button @onclick="@(() => Navigation.NavigateTo("/schedule"))">View Schedule</button>
+                    </BSTD>
+                </BSTR>
+            }
+        </BSTBody>
+    </BSTable>
+}
+
+@code{
+    [Inject]
+    public HttpClient httpClient{ get; set; }
+
+
+    public IEnumerable<StudentModel>? students;
+    public RegPeriodModel? regPeriod;
+
+    protected override async Task OnInitializedAsync()
+    {
+        students = await JsonSerializer.DeserializeAsync<IEnumerable<StudentModel>>
+        (await httpClient.GetStreamAsync("Schedule/RegisteredStudents"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+
+        regPeriod = await JsonSerializer.DeserializeAsync<RegPeriodModel>
+        (await httpClient.GetStreamAsync("Schedule/LastRegPeriod"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+
+    }
+}

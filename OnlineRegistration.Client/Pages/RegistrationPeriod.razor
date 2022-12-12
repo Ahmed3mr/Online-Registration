@@ -1,0 +1,53 @@
+﻿@page "/regPeriod"
+
+@using OnlineRegistration.Client.Models;
+@using System.Text.Json;
+<h3>RegistrationPeriod</h3>
+
+
+@if (regPeriod == null)
+{
+    <p><em>loading...</em></p>
+}
+else
+{
+    <p>The latest Registration period starts from @regPeriod.StartDate and ends in @regPeriod.EndDate</p>
+
+
+
+
+    <label for="StartDate">StartDate</label>
+    <input type="datetime" @bind="regPeriodModel1.StartDate"/>
+
+    <label for="StartDate">EndDate</label>
+    <input type="datetime" @bind="regPeriodModel1.EndDate" />
+
+    <div>
+        <button @onclick="UpdateRegPeriod">ADD</button>
+    </div>
+}
+
+
+
+
+
+@code {
+    [Inject]
+    public HttpClient httpClient { get; set; }
+    public RegPeriodModel? regPeriod;
+    public RegPeriodModel? regPeriodModel1 = new RegPeriodModel();
+
+    protected override async Task OnInitializedAsync()
+    {
+        regPeriod = await JsonSerializer.DeserializeAsync<RegPeriodModel>
+       (await httpClient.GetStreamAsync("Schedule/LastRegPeriod"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+    }
+
+    public async void UpdateRegPeriod()
+    {
+        regPeriodModel1.TheAdminId = 1;
+        await httpClient.PostAsJsonAsync("RegPeriod/UpdateRegPeriod", regPeriodModel1);
+    }
+
+}

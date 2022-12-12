@@ -1,0 +1,12 @@
+C:\Users\ahmed\source\repos\OnlineRegistration.Client\OnlineRegistration.Shared\bin\Debug\net6.0\OnlineRegistration.Shared.deps.json
+C:\Users\ahmed\source\repos\OnlineRegistration.Client\OnlineRegistration.Shared\bin\Debug\net6.0\OnlineRegistration.Shared.dll
+C:\Users\ahmed\source\repos\OnlineRegistration.Client\OnlineRegistration.Shared\bin\Debug\net6.0\OnlineRegistration.Shared.pdb
+C:\Users\ahmed\source\repos\OnlineRegistration.Client\OnlineRegistration.Shared\obj\Debug\net6.0\OnlineRegistration.Shared.csproj.AssemblyReference.cache
+C:\Users\ahmed\source\repos\OnlineRegistration.Client\OnlineRegistration.Shared\obj\Debug\net6.0\OnlineRegistration.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ahmed\source\repos\OnlineRegistration.Client\OnlineRegistration.Shared\obj\Debug\net6.0\OnlineRegistration.Shared.AssemblyInfoInputs.cache
+C:\Users\ahmed\source\repos\OnlineRegistration.Client\OnlineRegistration.Shared\obj\Debug\net6.0\OnlineRegistration.Shared.AssemblyInfo.cs
+C:\Users\ahmed\source\repos\OnlineRegistration.Client\OnlineRegistration.Shared\obj\Debug\net6.0\OnlineRegistration.Shared.csproj.CoreCompileInputs.cache
+C:\Users\ahmed\source\repos\OnlineRegistration.Client\OnlineRegistration.Shared\obj\Debug\net6.0\OnlineRegistration.Shared.dll
+C:\Users\ahmed\source\repos\OnlineRegistration.Client\OnlineRegistration.Shared\obj\Debug\net6.0\refint\OnlineRegistration.Shared.dll
+C:\Users\ahmed\source\repos\OnlineRegistration.Client\OnlineRegistration.Shared\obj\Debug\net6.0\OnlineRegistration.Shared.pdb
+C:\Users\ahmed\source\repos\OnlineRegistration.Client\OnlineRegistration.Shared\obj\Debug\net6.0\ref\OnlineRegistration.Shared.dll
