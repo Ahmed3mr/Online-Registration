@@ -1,4 +1,5 @@
 ﻿using OnlineRegisteration.Shared.Models;
+using OnlineRegistration.Client.Models;
 using OnlineRegistration.Shared.Models;
 
 namespace OnlineRegistration.Server.ServicesInterfaces
@@ -9,7 +10,7 @@ namespace OnlineRegistration.Server.ServicesInterfaces
         Task<IEnumerable<Course>> untakencourses(int RegNum);
         Task<IEnumerable<Course>> TakenCourses(int RegNum);
         Task<IEnumerable<Course>> AllCourses();
-        Task<IEnumerable<Classroom>> AvailableClassrooms(int CourseId);
+        Task<IEnumerable<ClassroomModel>> AvailableClassrooms(int CourseId);
         Task Register(int studentId, List<int> classroomIds, int regperiodId);
         Task<String> CreditHoursRegistrationCheck(int studentId, List<int> classroomIds, int regperiodId);
         Task<String> OverLappingRegistrationCheck(int studentId, List<int> classroomIds, int regperiodId);

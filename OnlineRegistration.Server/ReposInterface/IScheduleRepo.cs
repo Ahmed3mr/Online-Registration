@@ -10,7 +10,7 @@ namespace OnlineRegistration.Server.ReposInterface
 
         Task<IEnumerable<Course>> TakenCourses(int RegNum);
 
-        Task<IEnumerable<Classroom>> AvailableClassrooms(int CourseId);
+        Task<IEnumerable<ClassroomModel>> AvailableClassrooms(int CourseId);
 
         Task<Classroom> GetClassroom(int ClassroomId);
 

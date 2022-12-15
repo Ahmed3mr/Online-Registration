@@ -4,6 +4,7 @@ using OnlineRegisteration.Shared.Models;
 using OnlineRegisteration.Server;
 using System.Linq.Expressions;
 using OnlineRegistration.Shared.Models;
+using OnlineRegistration.Client.Models;
 
 namespace OnlineRegistration.Server.Repos
 {
@@ -51,10 +52,16 @@ namespace OnlineRegistration.Server.Repos
 
         }
 
-        public async Task<IEnumerable<Classroom>> AvailableClassrooms(int CourseId)
+        public async Task<IEnumerable<ClassroomModel>> AvailableClassrooms(int CourseId)
         {
-            var availableClassrooms =await _context.Classrooms.Include(c =>c.TheCourse)
-                .Where(c => c.CourseID== CourseId).ToListAsync();
+            var availableClassrooms =await _context.Classrooms.Include(c=>c.TheLecturer).Include(c =>c.TheCourse)
+                .Where(c => c.CourseID== CourseId).Select(a => new ClassroomModel
+                {
+                    Id = a.Id,
+                    SlotName= a.SlotName,
+                    LecturerName =a.TheLecturer.Name
+                })
+                .ToListAsync();
             return availableClassrooms;
         }
 

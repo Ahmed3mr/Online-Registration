@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnlineRegisteration.Shared.Models;
+using OnlineRegistration.Client.Models;
 using OnlineRegistration.Server.ReposInterface;
 using OnlineRegistration.Server.ServicesInterfaces;
 
 namespace OnlineRegistration.Server.Controllers
 {
+    //[Authorize]
     [ApiController]
     [Route("[controller]")]
 
@@ -19,16 +22,16 @@ namespace OnlineRegistration.Server.Controllers
 
 
         [HttpGet("LastRegPeriod")]
-        public RegPeriod LastRegPeriod()
+        public async Task<IActionResult> LastRegPeriod()
         {
-            var result = RegPeriodService.LastRegPeriod();
-            return result;
+            var result = await RegPeriodService.LastRegPeriod();
+            return Ok(result);
         }
 
         [HttpPost("UpdateRegPeriod")]
-        public async Task<IActionResult> ChangeRegPeriod(DateTime SD, DateTime ED, int Adminid)
+        public async Task<IActionResult> ChangeRegPeriod([FromBody] RegPeriodModel regPeriod)
         { 
-            await RegPeriodService.ChangeRegPeriod(SD, ED, Adminid);
+            await RegPeriodService.ChangeRegPeriod(regPeriod);
             return Ok();
         }
 

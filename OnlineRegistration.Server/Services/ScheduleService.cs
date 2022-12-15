@@ -1,4 +1,5 @@
 ﻿using OnlineRegisteration.Shared.Models;
+using OnlineRegistration.Client.Models;
 using OnlineRegistration.Server.ReposInterface;
 using OnlineRegistration.Server.ServicesInterfaces;
 using OnlineRegistration.Shared.Models;
@@ -72,7 +73,7 @@ namespace OnlineRegistration.Server.Services
             return AVC;
         }
 
-        public async Task<IEnumerable<Classroom>> AvailableClassrooms(int CourseId)
+        public async Task<IEnumerable<ClassroomModel>> AvailableClassrooms(int CourseId)
         {
             return await _ScheduleRepo.AvailableClassrooms(CourseId);
         }

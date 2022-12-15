@@ -2,6 +2,7 @@
 using OnlineRegistration.Server.ReposInterface;
 using OnlineRegisteration.Shared.Models;
 using OnlineRegisteration.Server;
+using OnlineRegistration.Client.Models;
 
 namespace OnlineRegistration.Server.Repos
 {
@@ -15,33 +16,30 @@ namespace OnlineRegistration.Server.Repos
         }
 
 
-        public RegPeriod LastRegPeriod()
+        public async Task<RegPeriod> LastRegPeriod()
         {
-            var lastreg = _context.RegPeriods.OrderBy(a => a.ID)
+            var lastreg = await _context.RegPeriods.OrderBy(a => a.ID)
                 .Select(a => new RegPeriod
                 {
                     ID = a.ID,
                     StartDate = a.StartDate,
                     EndDate = a.EndDate
                 })
-                .Last();
+                .LastOrDefaultAsync();
 
             return lastreg;
         }
 
-        public async void ChangeRegPeriod(DateTime SD,DateTime ED,int Adminid)
+        public async Task ChangeRegPeriod(RegPeriodModel regPeriod)
         {
 
-            var ouradmin = await _context.Admins.Where(a=>a.Id== Adminid).FirstOrDefaultAsync();
-            var newReg = new RegPeriod { StartDate= SD, EndDate = ED,TheAdmin = ouradmin };
+            var ouradmin = await _context.Admins.Where(a=>a.Id== regPeriod.TheAdminId).FirstOrDefaultAsync();
+            var newReg = new RegPeriod { StartDate= regPeriod.StartDate, EndDate = regPeriod.EndDate,TheAdmin = ouradmin };
             await _context.RegPeriods.AddAsync(newReg);
 
             await _context.SaveChangesAsync();
         }
 
-        Task IRegPeriodRepo.ChangeRegPeriod(DateTime SD, DateTime ED, int Adminid)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

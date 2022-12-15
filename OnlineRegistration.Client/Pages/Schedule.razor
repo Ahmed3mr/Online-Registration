@@ -1,4 +1,5 @@
 ﻿@page "/Schedule"
+@page "/Schedule/{studentid:int}"
 @using System.Text.Json;
 @using OnlineRegistration.Client.Models;
 
@@ -48,7 +49,7 @@ else
                         if (emptySlotIndicator == false)
                         {
                             <BSTD>
-                                none
+                                 
                             </BSTD>
                         }
 
@@ -82,7 +83,7 @@ else
                         if (emptySlotIndicator == false)
                         {
                             <BSTD>
-                                none
+                                 
                             </BSTD>
                         }
 
@@ -118,7 +119,7 @@ else
                         if (emptySlotIndicator == false)
                         {
                             <BSTD>
-                                none
+                                 
                             </BSTD>
                         }
 
@@ -154,7 +155,7 @@ else
                         if (emptySlotIndicator == false)
                         {
                             <BSTD>
-                                none
+                                 
                             </BSTD>
                         }
 
@@ -190,7 +191,7 @@ else
                         if (emptySlotIndicator == false)
                         {
                             <BSTD>
-                                none
+                                 
                             </BSTD>
                         }
 
@@ -226,7 +227,7 @@ else
                         if (emptySlotIndicator == false)
                         {
                             <BSTD>
-                                none
+                                 
                             </BSTD>
                         }
 
@@ -251,14 +252,20 @@ else
     [Inject]
     public HttpClient httpClient { get; set; }
 
+    [Parameter]
+    public int studentid { get; set;}
+
+
     public IEnumerable<ScheduleSlotModel>? schedules;
     public int x = 10;
     public bool emptySlotIndicator;
 
     protected override async Task OnInitializedAsync()
     {
+        if (studentid == 0) studentid = 1;
+
         schedules = await JsonSerializer.DeserializeAsync<IEnumerable<ScheduleSlotModel>>
-        (await httpClient.GetStreamAsync($"Schedule/LastRegistered?studentId={1}&regpid={3}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        (await httpClient.GetStreamAsync($"Schedule/LastRegistered?studentId={studentid}&regpid={3}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
     }
 

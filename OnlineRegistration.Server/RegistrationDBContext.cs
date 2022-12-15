@@ -1,10 +1,11 @@
 ﻿
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using OnlineRegisteration.Shared.Models;
 
 namespace OnlineRegisteration.Server
 {
-    public class RegistrationDBContext : DbContext
+    public class RegistrationDBContext : IdentityDbContext
     {
 
         public RegistrationDBContext(DbContextOptions<RegistrationDBContext> Options) : base(Options)
@@ -14,6 +15,7 @@ namespace OnlineRegisteration.Server
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Course>()
                 .HasOne(c => c.DependantCourse)
                 .WithMany()

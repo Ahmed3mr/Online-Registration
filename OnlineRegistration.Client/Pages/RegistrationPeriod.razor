@@ -7,25 +7,35 @@
 
 @if (regPeriod == null)
 {
-    <p><em>loading...</em></p>
+    <p><em>loading...</em></p>              
 }
 else
 {
     <p>The latest Registration period starts from @regPeriod.StartDate and ends in @regPeriod.EndDate</p>
 
 
-
-
-    <label for="StartDate">StartDate</label>
-    <input type="datetime" @bind="regPeriodModel1.StartDate"/>
-
-    <label for="StartDate">EndDate</label>
-    <input type="datetime" @bind="regPeriodModel1.EndDate" />
-
-    <div>
-        <button @onclick="UpdateRegPeriod">ADD</button>
-    </div>
 }
+
+
+
+<div class="my-3">
+    <label>Start date</label> <br />
+    <input type="datetime-local" @bind-value="regPeriodModel1.StartDate" />
+</div>
+<div class="my-3">
+    <label>End date</label> <br />
+    <input type="datetime-local" @bind-value="regPeriodModel1.EndDate" />
+</div>
+<div class="my-3">
+    <button @onclick="UpdateRegPeriod">ADD</button>
+</div>
+
+
+
+
+<p>aaaa= @regPeriodModel1.StartDate and @regPeriodModel1.EndDate</p>
+
+
 
 
 
@@ -34,20 +44,24 @@ else
 @code {
     [Inject]
     public HttpClient httpClient { get; set; }
+
     public RegPeriodModel? regPeriod;
     public RegPeriodModel? regPeriodModel1 = new RegPeriodModel();
 
     protected override async Task OnInitializedAsync()
     {
         regPeriod = await JsonSerializer.DeserializeAsync<RegPeriodModel>
-       (await httpClient.GetStreamAsync("Schedule/LastRegPeriod"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        (await httpClient.GetStreamAsync("RegPeriod/LastRegPeriod"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
 
     }
 
-    public async void UpdateRegPeriod()
+    public async Task UpdateRegPeriod()
     {
         regPeriodModel1.TheAdminId = 1;
-        await httpClient.PostAsJsonAsync("RegPeriod/UpdateRegPeriod", regPeriodModel1);
+        var result = await httpClient.PostAsJsonAsync($"RegPeriod/UpdateRegPeriod", regPeriodModel1);
+        Console.WriteLine(result);
     }
+
 
 }

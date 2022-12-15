@@ -1,4 +1,5 @@
 ﻿using OnlineRegisteration.Shared.Models;
+using OnlineRegistration.Client.Models;
 
 namespace OnlineRegistration.Server.ReposInterface
 {
@@ -6,7 +7,7 @@ namespace OnlineRegistration.Server.ReposInterface
     {
 
 
-        public RegPeriod LastRegPeriod();
-        Task ChangeRegPeriod(DateTime SD, DateTime ED, int Adminid);
+        Task<RegPeriod> LastRegPeriod();
+        Task ChangeRegPeriod(RegPeriodModel regPeriod);
     }
 }

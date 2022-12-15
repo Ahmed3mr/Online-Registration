@@ -1,4 +1,5 @@
 ﻿using OnlineRegisteration.Shared.Models;
+using OnlineRegistration.Client.Models;
 using OnlineRegistration.Server.ReposInterface;
 using OnlineRegistration.Server.ServicesInterfaces;
 using System.Collections.Generic;
@@ -14,14 +15,14 @@ namespace OnlineRegistration.Server.Services
             _RegPeriodRepo = RegPeriodRepo;
         }
 
-        public async Task ChangeRegPeriod(DateTime SD, DateTime ED, int Adminid)
+        public async Task ChangeRegPeriod(RegPeriodModel regPeriod)
         {
-            await _RegPeriodRepo.ChangeRegPeriod(SD, ED, Adminid);
+            await _RegPeriodRepo.ChangeRegPeriod(regPeriod);
         }
 
-        public RegPeriod LastRegPeriod()
+        public async Task<RegPeriod> LastRegPeriod()
         {
-            return _RegPeriodRepo.LastRegPeriod();
+            return await _RegPeriodRepo.LastRegPeriod();
         }
     }
 }

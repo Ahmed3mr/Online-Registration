@@ -20,6 +20,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[c:/Users/ahmed/source/repos/OnlineRegistration.Client/OnlineRegistration.Client/Pages/Button.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQnV0dG9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [c:/Users/ahmed/source/repos/OnlineRegistration.Client/OnlineRegistration.Client/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -30,6 +34,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [c:/Users/ahmed/source/repos/OnlineRegistration.Client/OnlineRegistration.Client/Pages/RegisteredStudents.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXJlZFN0dWRlbnRzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[c:/Users/ahmed/source/repos/OnlineRegistration.Client/OnlineRegistration.Client/Pages/Registration.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0cmF0aW9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [c:/Users/ahmed/source/repos/OnlineRegistration.Client/OnlineRegistration.Client/Pages/RegistrationPeriod.razor]

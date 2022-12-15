@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Any;
 using OnlineRegisteration.Shared.Models;
+using OnlineRegistration.Client.Models;
 using OnlineRegistration.Server.ReposInterface;
 using OnlineRegistration.Server.ServicesInterfaces;
 
@@ -53,18 +54,18 @@ namespace OnlineRegistration.Server.Controllers
         }
 
         [HttpPost("Register")]
-        public async Task<IActionResult> Register(int studentId, List<int> classroomIds, int regperiodId)
+        public async Task<IActionResult> Register([FromBody]RegisterModel reg )
         {
                 
           
-                var OLCheck = await scheduleService.OverLappingRegistrationCheck(studentId, classroomIds, regperiodId);
-                var CHCheck = await scheduleService.CreditHoursRegistrationCheck(studentId, classroomIds, regperiodId);
-                var CCheck = await scheduleService.CapacityRegistrationCheck(studentId, classroomIds, regperiodId);
+                var OLCheck = await scheduleService.OverLappingRegistrationCheck(reg.studentId, reg.classroomIds, reg.regperiodId);
+                var CHCheck = await scheduleService.CreditHoursRegistrationCheck(reg.studentId, reg.classroomIds, reg.regperiodId);
+                var CCheck = await scheduleService.CapacityRegistrationCheck(reg.studentId, reg.classroomIds, reg.regperiodId);
 
-                if (OLCheck == "" && CHCheck == "" && CCheck == "")
+            if (OLCheck == "" && CHCheck == "" && CCheck == "")
             {
 
-                await scheduleService.Register(studentId, classroomIds, regperiodId);
+                await scheduleService.Register(reg.studentId, reg.classroomIds, reg.regperiodId);
                 return new ObjectResult("200 ok");
             }
             else

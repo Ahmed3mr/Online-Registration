@@ -40,10 +40,11 @@ else
                     <BSTD>@student.Name</BSTD>
                     <BSTD>@student.RegId</BSTD>
                     <BSTD>
-                        <button @onclick="@(() => Navigation.NavigateTo("/schedule"))">View Schedule</button>
+                        <button @onclick="@(() => Navigation.NavigateTo("/schedule/"+student.RegId))">View Schedule</button>
                     </BSTD>
                 </BSTR>
             }
+            
         </BSTBody>
     </BSTable>
 }
@@ -55,7 +56,7 @@ else
 
     public IEnumerable<StudentModel>? students;
     public RegPeriodModel? regPeriod;
-
+        
     protected override async Task OnInitializedAsync()
     {
         students = await JsonSerializer.DeserializeAsync<IEnumerable<StudentModel>>
@@ -63,7 +64,7 @@ else
 
 
         regPeriod = await JsonSerializer.DeserializeAsync<RegPeriodModel>
-        (await httpClient.GetStreamAsync("Schedule/LastRegPeriod"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+        (await httpClient.GetStreamAsync("RegPeriod/LastRegPeriod"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
 
     }
